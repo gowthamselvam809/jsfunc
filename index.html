@@ -35,8 +35,8 @@
         function sortDescending() {
             const inputNumbers = document.getElementById('inputNumbers').value;
             const numbersArray = inputNumbers.split(',')
-                .map(str => str.trim())  // Trim whitespace
-                .filter(str => str !== '')  // Filter out empty strings
+                .map(str => str.trim())  
+                .filter(str => str !== '') 
                 .map(Number);
 
             if (numbersArray.length < 2) {
