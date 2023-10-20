@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reverse Words in a Sentence</title>
+</head>
+<body>
+    <h1 style="margin-left: 5rem;">Reverse Words in a Sentence</h1>
+    <input type="text" id="inputSentence" placeholder="Enter a sentence" style="font-size: larger; margin-left: 5rem;width: 500px;height: 35px;">
+    <button onclick="reverseWords()" style="height: 40px;">Reverse Words</button>
+    <div style="margin-left: 5rem; margin-top: 3rem;">ANSWER : <h2 id="output" ></h2></div>
+
+    <p style="margin-left: 5rem;">---------------------------------------------------------------------------------------------------</p>
+
+    <h1 style="margin-left: 5rem;">Sort Numbers in Descending Order</h1>
+    <input type="text" id="inputNumbers" placeholder="Enter numbers (comma-separated)" style="font-size: larger; margin-left: 5rem;width: 500px;height: 35px;">
+    <button onclick="sortDescending()" style="height: 40px;">Sort Descending</button>
+    <div style="margin-left: 5rem; margin-top: 3rem;">ANSWER : <h2 id="output1" ></h2></div>
+
+    
+
+    <script>
+        function reverseWords() {
+            const inputSentence = document.getElementById('inputSentence').value;
+            const words = inputSentence.split(' ');
+
+            const reversedWords = words.map(word => {
+                return word.split('').reverse().join('');
+            });
+
+            const reversedSentence = reversedWords.join(' ');
+            document.getElementById('output').textContent = "Reversed Sentence :  " + reversedSentence;
+        }
+
+
+        function sortDescending() {
+            const inputNumbers = document.getElementById('inputNumbers').value;
+            const numbersArray = inputNumbers.split(',')
+                .map(str => str.trim())  // Trim whitespace
+                .filter(str => str !== '')  // Filter out empty strings
+                .map(Number);
+
+            if (numbersArray.length < 2) {
+                document.getElementById('output1').textContent = "Please enter at least two numbers.";
+                return;
+            }
+
+            if (numbersArray.some(isNaN)) {
+                document.getElementById('output1').textContent = "Invalid input. Please enter comma-separated numbers.";
+                return;
+            }
+
+            const sortedDescending = numbersArray.sort((a, b) => b - a);
+            document.getElementById('output1').textContent = "Descending Order: " + sortedDescending.join(', ');
+          }
+    </script>
+</body>
+</html>
